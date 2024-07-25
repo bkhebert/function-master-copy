@@ -277,7 +277,15 @@ var nonFriends = [];
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-
+/**
+ * I: an object, a key and a value.
+ * O: an object
+ * C: update the property <key> on <object> with new <value>.
+ * E: If <key> does not exist on <object> create it."
+ */
+//return the object with the value updated
+object[key] = value;
+return object
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -285,6 +293,25 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
+    /**
+     * I:an object and an array of strings
+     * O:an object
+     * C:remove any properties on <object> that are listed in <array>
+     * E:
+     */
+    //loop through the array
+    //if anything in the array matches a property in the object
+    //remove it
+    //loop through the array
+    for(i = 0; i < array.length; i++){
+        //if anything at the array index matches a key value in the object
+        if(Object.hasOwn(object, array[i])){
+            //delete it
+            delete object[array[i]]
+        }
+    }
+    //return the object
+    return object
 
 }
 
@@ -293,9 +320,22 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
-
-}
-
+    //declare a variable object and array that will take in no duplicates (noDupsObj, noDupsArr)
+    const noDupsArr = [];
+    const noDupsObj = {};
+     //use the for each method to cycle through the array and put each indexes into a function
+    array.forEach( function(str){
+        
+        //if the string does not exist as a key value inside the noDupsObj object
+        if(!noDupsObj[str]){
+          //add it to the no duplicates object, boolean of true
+          noDupsObj[str] = true;
+           //push it into the noDupsArr  array
+          noDupsArr.push(str);
+        } 
+    } )
+    return noDupsArr;
+    }
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
