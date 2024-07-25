@@ -215,7 +215,16 @@ return string.includes(word);
 //////////////////////////////////////////////////////////////////////
 
 function addFriend (name, object) {
-
+/**
+ * I: a string name and an object
+ * O: an object 
+ * C: the object should have the string name added to the key Friends
+ * E: the key Friends is an array
+ */
+//push the name into the objects friends array
+    object['friends'].push(name);
+//return the object
+    return object
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -223,7 +232,20 @@ function addFriend (name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) {
-
+/**
+ * I: a name and an object
+ * O: a boolean
+ * C: the boolean reflects if the name is in the objects friends key
+ * E: the friends key is an array
+ */
+//if the object has friends
+    if(object['friends']){
+//return the boolean of if the array includes the name
+        return object['friends'].includes(name);
+//ekse return false
+    } else {
+        return false
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -231,7 +253,23 @@ function isFriend(name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
-
+/**
+ * I: a name and an array of objects
+ * O: an array of strings
+ * C: the output array contains only strings that do not include the name in their friends key
+ * E: their friends key is an array
+ */
+//initialize an empty array variable. nonFriends
+//loop through the array
+//if the string at the index is not included in the name's key friends array, and the name is not the object itself's name
+//push that name to the nonFriends array
+var nonFriends = [];
+    for(i = 0; i < array.length; i++){
+        if(array[i]['friends'].includes(name) === false && array[i]['name'] !== name){
+            nonFriends.push(array[i]['name'])
+        }
+    }
+    return nonFriends;
 }
 
 //////////////////////////////////////////////////////////////////////
